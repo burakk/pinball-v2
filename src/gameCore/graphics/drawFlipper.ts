@@ -1,6 +1,6 @@
 import { RevoluteJoint } from "planck";
 import { globals } from "@gameConfig/globals";
-import flipperUrl from "../assets/images/flipper.svg";
+import flipperUrl from "../../assets/images/flipper.svg";
 
 
 
