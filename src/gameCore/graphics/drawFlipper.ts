@@ -1,10 +1,11 @@
 import { RevoluteJoint } from "planck";
 import { globals } from "@gameConfig/globals";
+import flipperUrl from "../assets/images/flipper.svg";
 
 
 
 const flipperImg = new Image();
-flipperImg.src = "src/assets/images/flipper.svg";
+flipperImg.src = flipperUrl;
 
 export const drawFlipper = function (joint: RevoluteJoint, ctx: CanvasRenderingContext2D) {
 
