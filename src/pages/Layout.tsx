@@ -4,6 +4,7 @@ import { NavFooter } from "../gameUi/components/Navs";
 import { useImagePreloader } from "@hooks/UsePreloader";
 import flipperUrl from "../assets/images/flipper.svg";
 import gifFx1 from "../assets/images/fx-1.gif";
+import LogoMain from "@gameUi/components/LogoMain";
 
 export const Layout = ({ children }: { children?: React.ReactNode }) => {
   const gameImages = [flipperUrl, gifFx1];
@@ -20,6 +21,7 @@ export const Layout = ({ children }: { children?: React.ReactNode }) => {
         <dialog>
           <NavFooter />
         </dialog>
+        <LogoMain />
       </footer>
     </>
   );

@@ -6,7 +6,7 @@ import { translateElement } from "@utils/translateElement";
 import { loadGifFxImages } from "@gameCore/effects/effect";
 import gifFx1 from "../assets/images/fx-1.gif";
 
-export const gifFxImages = loadGifFxImages([{ path: gifFx1, x: "calc( 50% - 200px )", y: "-80px" }, { path: gifFx1, x: "calc( 50% - 80px )", y: "210px" }]);
+export const gifFxImages = loadGifFxImages([{ path: gifFx1, x: "calc( 50% - 196px )", y: "-110px" }, { path: gifFx1, x: "calc( 50% - 78px )", y: "176px" }]);
 
 const gameElements = {
   balls: [

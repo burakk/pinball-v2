@@ -68,7 +68,7 @@ export default function PinballTable({ width = 384, height = 560 }) {
         }}
       />
 
-      <Grid />
+      {/* <Grid /> */}
       {gameInfo.runningMode === "stopped" && <OverlayGameOver />}
       <Score />
       <canvas
