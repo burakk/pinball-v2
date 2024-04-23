@@ -6,6 +6,11 @@
   --material-theme-sys-dark-inverse-surface: #eae1d9;
 }
 
+body,
+html {
+  height: 100%;
+}
+
 body {
   background-color: #1b1a19;
 
@@ -25,6 +30,10 @@ a {
   margin: 0 auto;
   padding: 0;
   text-align: center;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #root > footer {

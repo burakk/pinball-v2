@@ -32,7 +32,7 @@ function gameReducer(gameInfo: GameInfo, action: action): GameInfo {
       return { ...gameInfo, runningMode: "paused" };
     }
     case "scoreChanged": {
-      return { ...gameInfo, totalScore: 0 ?? action.payload };
+      return { ...gameInfo, totalScore: action.payload || 0 };
     }
     default:
       return gameInfo;
