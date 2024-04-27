@@ -10,6 +10,7 @@ import { Grid } from "./Grid";
 import { ButtonPlunge } from "./Buttons";
 import Score from "./Score";
 import { OverlayGameOver } from "./Overlays";
+import TouchLayout from "./TouchLayout";
 
 export default function PinballTable({ width = 384, height = 560 }) {
   const downKeys = useDownKeys();
@@ -68,6 +69,7 @@ export default function PinballTable({ width = 384, height = 560 }) {
         }}
       />
 
+      <TouchLayout />
       {/* <Grid /> */}
       {gameInfo.runningMode === "stopped" && <OverlayGameOver />}
       <Score />
