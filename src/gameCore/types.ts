@@ -4,6 +4,44 @@ import { ComponentPropsWithoutRef } from "react";
 
 import { Fixture, World, Body, Vec2, } from "planck";
 
+
+export type GameElements = {
+  balls:{initPosition:Vec2,  active:boolean}[],
+  scoops:{
+    shape:string, 
+    coordinates:Vec2[]
+  }[],
+  groundAnchors:Vec2[],
+  chainBumpers:{
+    shape:string, 
+    props:{
+      restitution:number,
+       friction:number,
+        damping:number
+      }
+      coordinates:Vec2[],
+    }[],
+  circleBumpers:{
+    shape:string,
+     position:Vec2,
+      props:{
+        restitution:number,
+         friction:number,
+          damping:number}
+      }[],
+  lanes:Vec2[][],
+
+  chainLanes:{shape:string, coordinates:Vec2[]}[],
+  tubes:{shape:string, coordinates:Vec2[][]}[],
+  slingshots:unknown[],
+  sensors:{shape: string, gameElementType:string, coordinates:Vec2[] | Vec2, id:string, fxGif?:HTMLImageElement}[],
+  flippers:{
+    bodyCoordinate:Vec2, boxCenter:Vec2, attributes:{hX:number, hY:number, d:number}, jointProps:FlipperJointProps,
+    id:string,
+    isMirrored?:boolean,
+}[],
+}
+
 export type FF = {
   id?: string | number;
   bumperId?: string;
@@ -11,7 +49,7 @@ export type FF = {
 } & Fixture;
 
 
-export type Globals = { world: World; ground: Body; scaleCanvas: number; gameElements: any; willBeRemovedParticles: Body[] }
+export type Globals = { world: World; ground: Body; scaleCanvas: number; gameElements: GameElements; willBeRemovedParticles: Body[] }
 
 
 export type Pinball = {
@@ -29,7 +67,7 @@ export type BodyUserData = { decayY: number }
 
 
 
-export type FlipperJointProps = { lowerAngle: number, upperAngle: number }
+export type FlipperJointProps = { lowerAngle: number, upperAngle: number, anchor:Vec2 }
 
 export interface GameInfoEvent extends Event {
   detail: GameInfo;

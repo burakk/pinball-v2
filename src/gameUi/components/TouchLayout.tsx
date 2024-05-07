@@ -32,10 +32,10 @@ const TouchLayout = () => {
       }}
     >
       <button
-        onPointerDown={() => {
+        onTouchStart={() => {
           keydown(37, "ArrowLeft");
         }}
-        onPointerUp={() => {
+        onTouchEnd={() => {
           keyup(37, "ArrowLeft");
         }}
         style={{
@@ -45,10 +45,10 @@ const TouchLayout = () => {
         }}
       ></button>
       <button
-        onPointerDown={() => {
+        onTouchStart={() => {
           keydown(39, "ArrowRight");
         }}
-        onPointerUp={() => {
+        onTouchEnd={() => {
           keyup(39, "ArrowRight");
         }}
         style={{

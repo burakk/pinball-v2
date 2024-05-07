@@ -13,8 +13,8 @@
     "@tanstack/react-router": "^1.26.7",
     "@tanstack/router-vite-plugin": "^1.26.6",
     "planck": "^1.0.0-alpha.4",
-    "react": "^0.0.0-experimental-48ec17b86-20240402",
-    "react-dom": "^0.0.0-experimental-48ec17b86-20240402",
+    "react": "^19.0.0-beta-94eed63c49-20240425",
+    "react-dom": "^19.0.0-beta-94eed63c49-20240425",
     "stage-js": "^0.9.5"
   },
   "devDependencies": {

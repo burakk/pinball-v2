@@ -1,6 +1,8 @@
-export function translateElement(coordinates: { x: number, y: number }[], moveBy: { x: number, y: number }) {
+import { Vec2 } from "planck";
 
-    for (let c of coordinates) {
+export function translateElement(coordinates: Vec2[], moveBy: { x: number, y: number }):Vec2[]{
+
+    for (const c of coordinates) {
         c.x += moveBy.x;
         c.y += moveBy.y;
     }

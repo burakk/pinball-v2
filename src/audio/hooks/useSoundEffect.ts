@@ -5,7 +5,7 @@ export function useSoundEffect(volume = 0.4, seconds = 0.008, tone = 10) {
     const audioContexRef = useRef<null | AudioContext>(new AudioContext());
     const arr: number[] = [];
     useEffect(() => {
-        window.AudioContext = window.AudioContext;
+        //window.AudioContext = window.AudioContext;
         audioContexRef.current = new AudioContext();
 
     }, []);

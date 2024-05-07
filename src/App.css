@@ -18,6 +18,7 @@ body {
   font-family: "Roboto Condensed", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {

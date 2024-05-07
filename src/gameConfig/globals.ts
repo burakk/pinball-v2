@@ -340,7 +340,8 @@ const gameElements = {
     {
       shape: "chain",
       coordinates: [
-        { x: 18.0, y: 17.0 },
+        Vec2(18.0, 17.0 ),
+     
         ...segmentedBezier(
           { x: 20.0, y: 5.0 },
           { x: 20.0, y: 3.0 },
@@ -354,7 +355,8 @@ const gameElements = {
     {
       shape: "chain",
       coordinates: [
-        { x: 19.5, y: 22.0 },
+        Vec2(19.5,  22.0),
+      
         ...segmentedBezier(
           { x: 19.5, y: 29.0 },
           { x: 19.5, y: 29.25 },
@@ -362,7 +364,8 @@ const gameElements = {
           { x: 19.0, y: 29.5 },
           9
         ),
-        { x: 16.75, y: 30.8 },
+        Vec2(16.75, 30.8),
+       
       ],
     },
   ],
@@ -373,7 +376,8 @@ const gameElements = {
       coordinates: [
         //inner
         [
-          { x: 3.8, y: 19.6 },
+          Vec2( 3.8, 19.6),
+         
 
           ...segmentedBezier(
             { x: 3.8, y: 12.5 },
@@ -402,7 +406,8 @@ const gameElements = {
         ],
         //outer
         [
-          { x: 3.0, y: 20.0 },
+          Vec2(3.0, 20.0),
+        
 
           ...segmentedBezier(
             { x: 2.8, y: 11.8 },
@@ -470,6 +475,7 @@ const gameElements = {
       id: "sensor-right-drain",
     },
   ],
+
   flippers: [
     {
       bodyCoordinate: Vec2(7.5, 31.0),
@@ -510,8 +516,8 @@ const credits = { bumper: 3 };
 
 const levels = [
   { requiredScore: 0 },
-  { requiredScore: 200 },
-  { requiredScore: 400 },
+  { requiredScore: 100 },
+  { requiredScore: 120 },
 ];
 
 const world = new World(Vec2(0.0, 10.0));

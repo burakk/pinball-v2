@@ -19,10 +19,11 @@
 
 .ButtonPlunge {
   position: absolute;
-  bottom: 16px;
-  right: 24px;
+  bottom: 13px;
+  right: 23px;
   z-index: 1000;
-  border: 2px dotted rgb(108, 245, 129);
+  border: 2px solid rgba(108, 220, 245, 0.519);
+  filter: blur(4);
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -30,16 +31,59 @@
   cursor: pointer;
   animation: anim-plunger 0.6s alternate-reverse infinite ease-in-out;
   transition: opacity 0.5s;
-  outline:none;
+  outline: none;
+}
+
+.ButtonPlunge::after {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(144, 225, 238);
+  animation: anim-plunger-center 0.6s alternate-reverse infinite ease-in-out;
+  border-radius: 50%;
+}
+
+.ButtonPlunge::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+  transform: scale(1) translate(-50%, -50%);
+  border: 1px solid rgb(108, 245, 129);
+  opacity: 0.7;
+  border-radius: 50%;
 }
 
 @keyframes anim-plunger {
   from {
-    opacity: 0.4;
+    opacity: 0.8;
+    transform: scale(1) translate(0);
   }
 
   to {
     opacity: 1;
+    transform: scale(0.9) translate(0);
+  }
+}
+@keyframes anim-plunger-center {
+  from {
+    width: 16px;
+    height: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+
+  to {
+    width: 2px;
+    height: 2px;
   }
 }
 

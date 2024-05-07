@@ -1,22 +1,22 @@
 import { levels } from "@gameConfig/globals";
-import { plunge } from "@gameCore/elements/ball";
+import { plungeSimple } from "@gameCore/elements/ball";
 import { Body } from "planck";
 
 let level = 0;
 
+
 export function manageLevels(currentScore: number, balls: Body[]) {
-    if (currentScore > levels[1].requiredScore && level !== 1) {
+    if (currentScore > levels[1].requiredScore && level === 0  ) {
         //two balls
         level = 1;
-        plunge(balls[2])();
-       
+       plungeSimple(balls[2]);
     }
 
-    if (currentScore > levels[2].requiredScore && level !== 2 ) {
+    if (currentScore > levels[2].requiredScore && level === 1 ) {
         //three balls
         level = 2;
-        balls[1].setActive(true);
-        balls[2].setActive(true);
+        plungeSimple(balls[1]);
+        plungeSimple(balls[2]);
       
     }
 }
