@@ -21,11 +21,12 @@ export const Button = ({
 
 export const ButtonPlunge = ({ onPlunge }: { onPlunge: () => void }) => {
   const [active, setActive] = useState(true);
+  if (!active) return null;
   return (
     <Button
       onClick={() => {
         playPlungerSound();
-        setActive(!active);
+        setActive(false);
         onPlunge();
       }}
       className={`${styles.ButtonPlunge} ${!active && styles.ButtonPlungeOff}`}

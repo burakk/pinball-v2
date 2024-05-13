@@ -58,6 +58,8 @@ export default function PinballTable({ width = 384, height = 560 }) {
     };
   }, [width, height]);
 
+
+
   if (!gameInfo) return null;
 
   return (
@@ -66,6 +68,7 @@ export default function PinballTable({ width = 384, height = 560 }) {
       style={{ width, height, position: "relative", margin: "0 auto" }}
     >
       {showGrid && <Grid />}
+      
       <ButtonPlunge
         onPlunge={() => {
           pinballRef.current?.plunge();
