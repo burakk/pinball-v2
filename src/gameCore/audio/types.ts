@@ -1,0 +1,1 @@
+export type WaveFroms =  'sine' | 'square' | 'triangle' | 'sawtooth';

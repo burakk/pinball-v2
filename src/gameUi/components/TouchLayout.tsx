@@ -28,7 +28,7 @@ const TouchLayout = () => {
         width: "100%",
         height: "100%",
         display: "flex",
-        zIndex: "1002",
+        zIndex: "var(--touch-layout-z-index)",
       }}
     >
       <button

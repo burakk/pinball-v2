@@ -15,6 +15,7 @@ export const render = function (ctx: CanvasRenderingContext2D) {
   for (let b = globals.world.getBodyList(); b; b = b.getNext()) {
     for (let f: FF | null = b.getFixtureList(); f; f = f.getNext()) {
       const shape = f.getShape();
+      const fixtureColor = f.getUserData()?.color;
 
       const { gameElementType, bonus, fillColor, fxGif } =
         (f.getUserData() as GameElementUserData) || ({} as GameElementUserData);
@@ -40,8 +41,7 @@ export const render = function (ctx: CanvasRenderingContext2D) {
         case "EDGE-SENSOR":
         case "TUBE-SENSOR-OUT":
         case "TUBE-SENSOR-IN":
-        case "TUBE-SENSOR-IN-LEFT-LIMIT":
-          drawEdge(ctx, shape as Edge);
+          drawEdge(ctx, shape as Edge, fixtureColor);
           break;
         case "CENTRAL-SENSOR":
         case "SCOOP-SENSOR":
@@ -56,7 +56,8 @@ export const render = function (ctx: CanvasRenderingContext2D) {
             shape,
             ctx,
             shape.m_p,
-            bonus?.state !== "inactive" ? "rgba(227, 188, 226, 0.4)" : undefined
+            bonus?.state !== "inactive" ? "rgba(227, 188, 226, 0.4)" : undefined,
+            fixtureColor,
           );
           break;
       }

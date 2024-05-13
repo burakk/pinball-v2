@@ -46,7 +46,7 @@ export const drawFlipper = function (joint: RevoluteJoint, ctx: CanvasRenderingC
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
     ctx.lineWidth = 0.5;
-    // ctx.strokeStyle = "red";
+    ctx.strokeStyle = "transparent";
     ctx.stroke();
 };
 

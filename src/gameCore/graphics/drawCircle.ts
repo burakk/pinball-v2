@@ -2,7 +2,7 @@ import { Shape, Vec2 } from "planck";
 import { globals } from "@gameConfig/globals";
 
 
-export const drawCircle = function (shape: Shape, ctx: CanvasRenderingContext2D, pos: Vec2, fillColor?: string) {
+export const drawCircle = function (shape: Shape, ctx: CanvasRenderingContext2D, pos: Vec2, fillColor?: string, color?:string) {
 
     const { scaleCanvas } = globals;
 
@@ -21,8 +21,9 @@ export const drawCircle = function (shape: Shape, ctx: CanvasRenderingContext2D,
     if (fillColor) {
         ctx.fillStyle = fillColor
         ctx.fill();
-    };
-    ctx.strokeStyle = "#fff";
+    }
+
+    ctx.strokeStyle = color || "#fff";
     //ctx.strokeStyle = "red"; // options.strokeStyle;
     ctx.stroke();
 

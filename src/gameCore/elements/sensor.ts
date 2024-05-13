@@ -33,6 +33,6 @@ export function createSensors() {
       isSensor: true,
     });
 
-    sensor.setUserData({ id: s.id, gameElementType: s.gameElementType, bonus: attachLockBonus(), fxGif: s.fxGif });
+    sensor.setUserData({ id: s.id, gameElementType: s.gameElementType, bonus: attachLockBonus(), fxGif: s.fxGif,  color:"rgba(255, 255, 255, 0.1)"  });
   }
 }

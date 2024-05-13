@@ -1,7 +1,7 @@
 import { Edge } from "planck";
 import { globals } from "@gameConfig/globals";
 
-export const drawEdge = function (ctx: CanvasRenderingContext2D, edge: Edge) {
+export const drawEdge = function (ctx: CanvasRenderingContext2D, edge: Edge, color?:string) {
 
 	const { scaleCanvas } = globals;
 
@@ -19,7 +19,7 @@ export const drawEdge = function (ctx: CanvasRenderingContext2D, edge: Edge) {
 
 	ctx.lineCap = 'round';
 	ctx.lineWidth = 1;
-	ctx.strokeStyle = "white";
+	ctx.strokeStyle =  color || "white";
 	ctx.stroke();
 
 };

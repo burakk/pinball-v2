@@ -3,48 +3,36 @@ import { Body } from "planck";
 
 //inactiveDuration = 10000, activeDuration = 7000, lockDuration = 2000
 
-export function attachLockBonus(score = 50, inactiveDuration = 10000, activeDuration = 7000, lockDuration = 2000) {
+export function attachLockBonus(activeDuration = 7000, lockDuration = 2000) {
+  const rVal = { state: "inactive", lock };
 
+  let timeoutRef: number;
 
-    const rVal = { state: "inactive", lock };
+  async function startLifeCycle() {
+    const inactiveDuration = Math.random() * 8000 + 14000;
 
+    setTimeout(() => {
+      rVal.state = "active";
 
-    let timeoutRef: number;
+      timeoutRef = setTimeout(() => {
+        rVal.state = "inactive";
+        startLifeCycle();
+      }, activeDuration);
+    }, inactiveDuration);
+  }
 
-    async function startStateCycle() {
+  async function lock(ball: Body) {
+    rVal.state = "busy";
+    holdBall(ball);
+    clearTimeout(timeoutRef);
+    setTimeout(() => {
+      throwBall(ball);
+      rVal.state = "inactive";
+      startLifeCycle();
+    }, lockDuration);
+  }
 
-        setTimeout(() => {
-            rVal.state = "active";
+  startLifeCycle();
 
-            timeoutRef = setTimeout(() => {
-                rVal.state = "inactive";
-                startStateCycle();
-            }, activeDuration)
-
-        }, inactiveDuration)
-
-
-    }
-
-    async function lock(ball: Body) {
-        rVal.state = "busy";
-        holdBall(ball);
-        clearTimeout(timeoutRef);
-        setTimeout(() => {
-            throwBall(ball);
-            rVal.state = "inactive";
-            startStateCycle();
-        }, lockDuration);
-
-
-
-    }
-
-
-    startStateCycle();
-
-    return rVal;
+  return rVal;
 }
-
-
-

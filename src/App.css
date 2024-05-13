@@ -11,6 +11,10 @@
 
 :root {
   --material-theme-sys-dark-inverse-surface: #eae1d9;
+  --overlays-z-index: 9999;
+  --grid-z-index: 1003;
+  --touch-layout-z-index: 1002;
+  --plunger-z-index: 1003;
 }
 
 body,

@@ -9,7 +9,7 @@ import { useGameContext } from "@context/GameContext";
 import { Grid } from "./Grid";
 import { ButtonPlunge } from "./Buttons";
 import Score from "./Score";
-import { OverlayGameOver } from "./Overlays";
+import { OverlayRouter } from "./Overlays";
 import TouchLayout from "./TouchLayout";
 
 export default function PinballTable({ width = 384, height = 560 }) {
@@ -20,6 +20,8 @@ export default function PinballTable({ width = 384, height = 560 }) {
 
   const { gameInfo } = useGameContext() || {};
 
+  /* helper grid for locating elements */
+  const showGrid = false;
   // tick
   useAnimationFrame(() => {
     globals.world.step(1 / 60);
@@ -38,7 +40,7 @@ export default function PinballTable({ width = 384, height = 560 }) {
     } else {
       pinballRef.current?.moveRightFlipper(-10);
     }
-  }, gameInfo.runningMode);
+  }, gameInfo?.runningMode);
 
   /* create pinball core */
   useEffect(() => {
@@ -63,6 +65,7 @@ export default function PinballTable({ width = 384, height = 560 }) {
       className="PinballTable"
       style={{ width, height, position: "relative", margin: "0 auto" }}
     >
+      {showGrid && <Grid />}
       <ButtonPlunge
         onPlunge={() => {
           pinballRef.current?.plunge();
@@ -70,15 +73,17 @@ export default function PinballTable({ width = 384, height = 560 }) {
       />
 
       <TouchLayout />
-      {/* <Grid /> */}
-      {gameInfo.runningMode === "stopped" && <OverlayGameOver />}
+
+      {<OverlayRouter content={gameInfo.runningMode === "stopped" ? "gameover" : undefined} />}
       <Score />
+
       <canvas
         ref={canvasRef}
         width={width * 2}
         height={height * 2}
         style={{ width, height }}
       />
+
     </div>
   );
 }

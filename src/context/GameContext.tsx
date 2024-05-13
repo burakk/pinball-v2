@@ -8,7 +8,7 @@ import {
 } from "react";
 
 import { GameInfo } from "@gameCore/types";
-import { useSoundEffect } from "audio/hooks/useSoundEffect";
+
 
 type action = {
   type: "started" | "paused" | "stopped" | "scoreChanged";
@@ -46,7 +46,7 @@ export function GameContextProvider({ children }: { children: ReactNode }) {
     totalScore: 0,
   });
 
-  const playSoundEffect = useSoundEffect();
+
 
   useEffect(() => {
     function handleGameInfoChange(info: GameInfo) {
@@ -56,9 +56,7 @@ export function GameContextProvider({ children }: { children: ReactNode }) {
           payload: info.totalScore,
         });
 
-        if (info.contactedTypes?.includes("CIRCLE-BUMPER")) {
-          playSoundEffect && playSoundEffect();
-        }
+
       }
 
       if (info.runningMode == "stopped") {

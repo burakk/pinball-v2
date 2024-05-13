@@ -6,14 +6,16 @@ import { translateElement } from "@utils/translateElement";
 import { loadGifFxImages } from "@gameCore/effects/effect";
 import gifFx1 from "../assets/images/fx-1.gif";
 
-export const gifFxImages = loadGifFxImages([{ path: gifFx1, x: "calc( 50% - 198px )", y: "calc( 50% - 392px)" }, { path: gifFx1, x: "calc( 50% - 78px )", y: "calc( 50% - 104px )" }]);
+export const gifFxImages = loadGifFxImages([
+  { path: gifFx1, x: "calc( 50% - 198px )", y: "calc( 50% - 392px)" },
+  { path: gifFx1, x: "calc( 50% - 78px )", y: "calc( 50% - 104px )" },
+]);
 
 const gameElements = {
   balls: [
     { initPosition: Vec2(21.3, 33.0), active: false },
     { initPosition: Vec2(21.3, 31.0), active: false },
     { initPosition: Vec2(21.3, 29.0), active: false },
-
   ],
 
   scoops: [
@@ -23,8 +25,8 @@ const gameElements = {
         ...segmentedBezier(
           { x: 5.0, y: 2.0 },
           { x: 3.0, y: 1.5 },
-          { x: 3.0, y: 4.5 },
-          { x: 5.0, y: 4.0 },
+          { x: 2.6, y: 4.2 },
+          { x: 4.8, y: 4.1 },
           11
         ),
       ],
@@ -66,40 +68,6 @@ const gameElements = {
   ],
 
   chainBumpers: [
-    // {
-    //   shape: "chain",
-    //   props: {
-    //     restitution: 0.9,
-    //     friction: 0,
-    //     damping: 0,
-    //   },
-
-    //   coordinates: 
-    //     [
-    //       ...segmentedBezier(
-    //         { x: 7.0, y: 9.7 },
-    //         { x: 7.0, y: 10.1 },
-    //         { x: 7.4, y: 10.1},
-    //         { x: 7.4, y: 9.6 },
-
-    //         6
-    //       ),
-
-    //       ...segmentedBezier(
-    //         { x: 7.4, y: 9.0 },
-    //         { x: 7.4, y: 8.6 },
-    //         { x: 7.0, y: 8.6 },
-    //         { x: 7.0, y: 9.0 },
-
-    //         6
-    //       ),
-
-
-    //     ],
-
-
-    // },
-
     //slingshot left
     {
       shape: "chain",
@@ -176,6 +144,7 @@ const gameElements = {
       ),
     },
 
+    //bottom of circle bumpers
     {
       shape: "chain",
       props: {
@@ -184,17 +153,52 @@ const gameElements = {
         damping: 0,
       },
       coordinates: rotatePoints(
-        [
-          Vec2(11.5, 12.4),
-          Vec2(12.0, 13.0),
-          Vec2(14.4, 13.0),
-          Vec2(14.6, 12.6),
-        ],
-        (14 * Math.PI) / 180
+        translateElement(
+          [
+            ...segmentedBezier(
+              Vec2(0.2, 0.0),
+              Vec2(0.0, 0.0),
+              Vec2(0.0, 0.2),
+              Vec2(0.0, 0.2),
+              4
+            ),
+
+            ...segmentedBezier(
+              Vec2(0.0, 0.4),
+              Vec2(0.0, 0.4),
+              Vec2(0.0, 0.6),
+              Vec2(0.2, 0.6),
+              4
+            ),
+
+            ...segmentedBezier(
+              Vec2(1.2, 0.6),
+              Vec2(1.4, 0.6),
+              Vec2(1.4, 0.4),
+              Vec2(1.4, 0.4),
+              4
+            ),
+
+            ...segmentedBezier(
+              Vec2(1.4, 0.2),
+              Vec2(1.4, 0.0),
+              Vec2(1.2, 0.0),
+              Vec2(1.2, 0.0),
+              4
+            ),
+
+            // Vec2(1.0, 0.0),
+            // Vec2(1.0, 0.6),
+            // Vec2(3.5, 0.6),
+            // Vec2(3.5, 0.0),
+          ],
+          Vec2(12.2, 12.6)
+        ),
+        (12 * Math.PI) / 180
       ),
     },
 
-    /*
+    //left of circle bumpers
     {
       shape: "chain",
       props: {
@@ -203,14 +207,104 @@ const gameElements = {
         damping: 0,
       },
       coordinates: rotatePoints(
-        [
-          Vec2(3.0, 17.0),
-          Vec2(3.0, 22.0),
-          Vec2(3.3, 21.4),
-          Vec2(3.5, 18.0),
-        ], -0.2)
+        translateElement(
+          [
+            ...segmentedBezier(
+              Vec2(0.3, 0.0),
+              Vec2(0.0, 0.0),
+              Vec2(0.0, 0.2),
+              Vec2(0.0, 0.2),
+              4
+            ),
+
+            ...segmentedBezier(
+              Vec2(0.0, 0.4),
+              Vec2(0.0, 0.4),
+              Vec2(0.0, 0.6),
+              Vec2(0.3, 0.6),
+              4
+            ),
+
+            ...segmentedBezier(
+              Vec2(1.6, 0.6),
+              Vec2(2.0, 0.6),
+              Vec2(2.0, 0.4),
+              Vec2(2.0, 0.4),
+              4
+            ),
+
+            ...segmentedBezier(
+              Vec2(2.0, 0.2),
+              Vec2(2.0, 0.0),
+              Vec2(1.7, 0.0),
+              Vec2(1.7, 0.0),
+              4
+            ),
+
+            // Vec2(1.0, 0.0),
+            // Vec2(1.0, 0.6),
+            // Vec2(3.5, 0.6),
+            // Vec2(3.5, 0.0),
+          ],
+          Vec2(9.0, 7.8)
+        ),
+        (96 * Math.PI) / 180
+      ),
     },
-    */
+
+    //right of circle bumpers
+    {
+      shape: "chain",
+      props: {
+        restitution: 0.9,
+        friction: 0,
+        damping: 0,
+      },
+      coordinates: rotatePoints(
+        translateElement(
+          [
+            ...segmentedBezier(
+              Vec2(0.3, 0.0),
+              Vec2(0.0, 0.0),
+              Vec2(0.0, 0.2),
+              Vec2(0.0, 0.2),
+              4
+            ),
+
+            ...segmentedBezier(
+              Vec2(0.0, 0.4),
+              Vec2(0.0, 0.4),
+              Vec2(0.0, 0.6),
+              Vec2(0.3, 0.6),
+              4
+            ),
+
+            ...segmentedBezier(
+              Vec2(1.6, 0.6),
+              Vec2(2.0, 0.6),
+              Vec2(2.0, 0.4),
+              Vec2(2.0, 0.4),
+              4
+            ),
+
+            ...segmentedBezier(
+              Vec2(2.0, 0.2),
+              Vec2(2.0, 0.0),
+              Vec2(1.7, 0.0),
+              Vec2(1.7, 0.0),
+              4
+            ),
+
+            // Vec2(1.0, 0.0),
+            // Vec2(1.0, 0.6),
+            // Vec2(3.5, 0.6),
+            // Vec2(3.5, 0.0),
+          ],
+          Vec2(17.6, 6.0)
+        ),
+        (70 * Math.PI) / 180
+      ),
+    },
 
     {
       shape: "chain",
@@ -259,7 +353,10 @@ const gameElements = {
         friction: 0,
         damping: 0,
       },
-      coordinates: [Vec2(6.5, 4.3), Vec2(4.0, 5.0), Vec2(4.0, 5.3)],
+      coordinates: translateElement(
+        [Vec2(6.5, 4.3), Vec2(4.0, 5.0), Vec2(4.0, 5.3)],
+        Vec2(0.0, 0.5)
+      ),
     },
   ],
 
@@ -340,8 +437,8 @@ const gameElements = {
     {
       shape: "chain",
       coordinates: [
-        Vec2(18.0, 17.0 ),
-     
+        Vec2(18.0, 17.0),
+
         ...segmentedBezier(
           { x: 20.0, y: 5.0 },
           { x: 20.0, y: 3.0 },
@@ -355,8 +452,8 @@ const gameElements = {
     {
       shape: "chain",
       coordinates: [
-        Vec2(19.5,  22.0),
-      
+        Vec2(19.5, 22.0),
+
         ...segmentedBezier(
           { x: 19.5, y: 29.0 },
           { x: 19.5, y: 29.25 },
@@ -365,7 +462,6 @@ const gameElements = {
           9
         ),
         Vec2(16.75, 30.8),
-       
       ],
     },
   ],
@@ -376,8 +472,7 @@ const gameElements = {
       coordinates: [
         //inner
         [
-          Vec2( 3.8, 19.6),
-         
+          Vec2(3.8, 19.6),
 
           ...segmentedBezier(
             { x: 3.8, y: 12.5 },
@@ -401,13 +496,10 @@ const gameElements = {
             { x: 6.6, y: 11.0 },
             9
           ),
-
-
         ],
         //outer
         [
           Vec2(3.0, 20.0),
-        
 
           ...segmentedBezier(
             { x: 2.8, y: 11.8 },
@@ -511,18 +603,14 @@ const gameElements = {
     },
   ],
 };
-
 const credits = { bumper: 3 };
-
 const levels = [
   { requiredScore: 0 },
-  { requiredScore: 100 },
-  { requiredScore: 120 },
+  { requiredScore: 400 },
+  { requiredScore: 800 },
 ];
-
 const world = new World(Vec2(0.0, 10.0));
 const ground = createGround(world, gameElements.groundAnchors);
-
 const globals: Globals = {
   world,
   ground,

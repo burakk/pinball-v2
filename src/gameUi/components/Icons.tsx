@@ -91,4 +91,16 @@ const IconPause = () => (
   </svg>
 );
 
-export { IconRestart, IconPause, IconGithub, IconPlay, IconHelp };
+const IconKeyboardLeft = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" /></svg>
+)
+
+const IconKeyboardRight = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" /></svg>
+)
+
+const IconKeyboardKeys = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M280-280v-80h400v80H280ZM120-440v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80ZM120-600v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Zm160 0v-80h80v80h-80Z" /></svg>
+)
+
+export { IconRestart, IconPause, IconGithub, IconPlay, IconHelp, IconKeyboardKeys, IconKeyboardLeft, IconKeyboardRight };

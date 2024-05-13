@@ -27,8 +27,8 @@ export function createTubes() {
 
         const [w1Coords, w2Coords] = tube.coordinates;
 
-        const w1coordsStart = w1Coords.at(-1);
-        const w2coordsStart = w2Coords.at(-1);
+        const w1coordsStart = w1Coords[w1Coords.length - 1];
+        const w2coordsStart = w2Coords[w2Coords.length - 1];
 
 
         const inSensorMidPoint = Vec2((w2coordsStart.x + w1coordsStart.x) * 0.5, (w2coordsStart.y + w1coordsStart.y) * 0.5);
@@ -50,8 +50,8 @@ export function createTubes() {
             isSensor: true,
         });
 
-        inSensor.setUserData({ gameElementType: "TUBE-SENSOR-IN", midPoint: inSensorMidPoint });
-        outSensor.setUserData({ gameElementType: "TUBE-SENSOR-OUT" });
+        inSensor.setUserData({ gameElementType: "TUBE-SENSOR-IN", midPoint: inSensorMidPoint,color:"rgba(200, 200, 0, 0.5)" });
+        outSensor.setUserData({ gameElementType: "TUBE-SENSOR-OUT", color:"rgba(200, 200, 0, 0.1)" });
 
 
         body.setUserData({ gameElementType: "TUBE", toggleTubeWalls: toggleTubeWalls(wall1, wall2) });

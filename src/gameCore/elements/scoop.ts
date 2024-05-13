@@ -12,6 +12,6 @@ export const createScoops = () => {
             shape: Chain(scoop.coordinates, false),
         });
 
-        f.setUserData({ gameElementType: "SCOOP" });
+        f.setUserData({ gameElementType: "SCOOP"});
     }
 }

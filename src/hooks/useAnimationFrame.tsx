@@ -1,5 +1,5 @@
 import { useEffect, useRef, useCallback } from "react";
-import { runningState } from "../types";
+import { runningState } from "../gameCore/types";
 
 export function useAnimationFrame(
   handleAnimate: () => void,

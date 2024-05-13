@@ -95,6 +95,7 @@ export type GameElementUserData = {
   bonus: { state: 'inactive' | 'active' | 'busy', lock: (ball: Body) => Promise<void> },
   fillColor?: string,
   initPosition?: Vec2,
+  midPoint?: Vec2,
 }
 
 export interface ButtonProps extends ComponentPropsWithoutRef<"button"> {

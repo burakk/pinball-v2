@@ -21,7 +21,7 @@
   position: absolute;
   bottom: 13px;
   right: 23px;
-  z-index: 1000;
+  z-index: var(--plunger-z-index);
   border: 2px solid rgba(108, 220, 245, 0.519);
   filter: blur(4);
   width: 40px;
