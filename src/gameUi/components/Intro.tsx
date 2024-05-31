@@ -1,7 +1,7 @@
 import { PropsWithRef } from "react";
 import intro from "../../assets/videos/intro.mp4";
 
-export default function Intro(props: PropsWithRef<HTMLVideoElement>) {
+export default function Intro(props: PropsWithRef<HTMLVideoElement> & { action: () => void }) {
   return (
     <video
       onTimeUpdate={() => {

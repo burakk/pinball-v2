@@ -56,7 +56,7 @@ export const OverlayContentGameOver = () => {
 };
 
 export const OverlayContentInfo = (
-  props: PropsWithChildren
+  props: PropsWithChildren & { onCloseOverlay: () => void }
 ) => {
 
   const introPlayed = sessionStorage.getItem("introPlayed");
