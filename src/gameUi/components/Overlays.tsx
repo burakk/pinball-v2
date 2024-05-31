@@ -69,8 +69,6 @@ export const OverlayContentInfo = (
 
       sessionStorage.setItem("introPlayed", "true");
 
-    } else {
-      videoRef.current ? videoRef.current.currentTime = 6.7 : null;
     }
   }, []);
 
@@ -81,6 +79,9 @@ export const OverlayContentInfo = (
           <LogoMain />
           {props.children}
           <Button onClick={() => {
+            if (introPlayed) {
+              videoRef.current ? videoRef.current.currentTime = 6.7 : null;
+            }
             videoRef.current?.play();
             setShowInfo(false);
           }}>
