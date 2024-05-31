@@ -59,18 +59,11 @@ export const OverlayContentInfo = (
   props: PropsWithChildren & { onCloseOverlay: () => void }
 ) => {
 
-  const introPlayed = sessionStorage.getItem("introPlayed");
+
   const [showInfo, setShowInfo] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>();
 
-  useEffect(() => {
 
-    if (!introPlayed) {
-
-      sessionStorage.setItem("introPlayed", "true");
-
-    }
-  }, []);
 
   return (
     <div className={styles.OverlayContentIntro}>
@@ -79,8 +72,10 @@ export const OverlayContentInfo = (
           <LogoMain />
           {props.children}
           <Button onClick={() => {
-            if (introPlayed) {
+            if (sessionStorage.getItem("introPlayed")) {
               videoRef.current ? videoRef.current.currentTime = 6.7 : null;
+            } else {
+              sessionStorage.setItem("introPlayed", "played");
             }
             videoRef.current?.play();
             setShowInfo(false);
