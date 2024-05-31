@@ -9,10 +9,14 @@ import { useGameContext } from "@context/GameContext";
 import { Grid } from "./Grid";
 import { ButtonPlunge } from "./Buttons";
 import Score from "./Score";
-import { OverlayRouter } from "./Overlays";
+import {
+  Overlays,
+} from "./Overlays";
 import TouchLayout from "./TouchLayout";
+import TableLightBulbs from "./TableLightBulbs";
 
 export default function PinballTable({ width = 384, height = 560 }) {
+
   const downKeys = useDownKeys();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
@@ -42,9 +46,9 @@ export default function PinballTable({ width = 384, height = 560 }) {
     }
   }, gameInfo?.runningMode);
 
-  /* create pinball core */
   useEffect(() => {
     if (!pinballRef.current) {
+      /* create pinball core */
       pinballRef.current = createPinball();
 
       ctxRef.current = (canvasRef.current as HTMLCanvasElement).getContext(
@@ -58,8 +62,6 @@ export default function PinballTable({ width = 384, height = 560 }) {
     };
   }, [width, height]);
 
-
-
   if (!gameInfo) return null;
 
   return (
@@ -68,7 +70,7 @@ export default function PinballTable({ width = 384, height = 560 }) {
       style={{ width, height, position: "relative", margin: "0 auto" }}
     >
       {showGrid && <Grid />}
-      
+
       <ButtonPlunge
         onPlunge={() => {
           pinballRef.current?.plunge();
@@ -77,8 +79,11 @@ export default function PinballTable({ width = 384, height = 560 }) {
 
       <TouchLayout />
 
-      {<OverlayRouter content={gameInfo.runningMode === "stopped" ? "gameover" : undefined} />}
+      <Overlays contentType={gameInfo.runningMode} key={gameInfo.runningMode} />
+
       <Score />
+
+      <TableLightBulbs />
 
       <canvas
         ref={canvasRef}
@@ -86,7 +91,6 @@ export default function PinballTable({ width = 384, height = 560 }) {
         height={height * 2}
         style={{ width, height }}
       />
-
     </div>
   );
 }

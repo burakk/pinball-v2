@@ -9,7 +9,6 @@ import {
 
 import { GameInfo } from "@gameCore/types";
 
-
 type action = {
   type: "started" | "paused" | "stopped" | "scoreChanged";
   payload?: number;
@@ -46,8 +45,6 @@ export function GameContextProvider({ children }: { children: ReactNode }) {
     totalScore: 0,
   });
 
-
-
   useEffect(() => {
     function handleGameInfoChange(info: GameInfo) {
       if (gameInfo.totalScore !== info.totalScore) {
@@ -55,8 +52,6 @@ export function GameContextProvider({ children }: { children: ReactNode }) {
           type: "scoreChanged",
           payload: info.totalScore,
         });
-
-
       }
 
       if (info.runningMode == "stopped") {
@@ -74,11 +69,7 @@ export function GameContextProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  return (
-    <GameContext.Provider value={{ gameInfo, dispatch }}>
-      {children}
-    </GameContext.Provider>
-  );
+  return <GameContext value={{ gameInfo, dispatch }}>{children}</GameContext>;
 }
 
 export function useGameContext() {

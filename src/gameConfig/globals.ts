@@ -4,11 +4,12 @@ import { Globals } from "@gameCore/types";
 import { rotatePoints, segmentedBezier } from "@utils/bezier";
 import { translateElement } from "@utils/translateElement";
 import { loadGifFxImages } from "@gameCore/effects/effect";
-import gifFx1 from "../assets/images/fx-1.gif";
+import gifFx1 from "../assets/images/fx_1.gif";
 
 export const gifFxImages = loadGifFxImages([
-  { path: gifFx1, x: "calc( 50% - 198px )", y: "calc( 50% - 392px)" },
-  { path: gifFx1, x: "calc( 50% - 78px )", y: "calc( 50% - 104px )" },
+  { path: gifFx1, x: "calc( 50% - 146px )", y: "calc( 50% - 258px )" },
+  { path: gifFx1, x: "calc( 50% - 22px  )", y: "calc( 50% + 30px  )" },
+
 ]);
 
 const gameElements = {

@@ -1,17 +1,17 @@
-
 import { Layout } from "./pages/Layout";
 import PinballTable from "@gameUi/components/PinballTable";
 import { useImagePreloader } from "@hooks/UsePreloader";
 import flipperUrl from "./assets/images/flipper.svg";
-import gifFx1 from "./assets/images/fx-1.gif";
+import gifFx1 from "./assets/images/fx_1.gif";
+import starAnim from "./assets/images/star.gif";
+import arrowsAnim from "./assets/images/arrows.gif";
 
 
 import "./App.css";
 import { GameContextProvider } from "./context/GameContext";
 
-
 function App() {
-  const gameImages = [flipperUrl, gifFx1];
+  const gameImages = [flipperUrl, gifFx1, starAnim, arrowsAnim];
   const isOk = useImagePreloader(gameImages);
 
   if (!isOk) return "loading";

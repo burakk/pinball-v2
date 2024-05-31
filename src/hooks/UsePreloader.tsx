@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const preloadImage = (src: string) => {
-  return new Promise((resolve, reject) => {
+  return new Promise<boolean>((resolve, reject) => {
     const img = new Image();
 
     img.onload = () => {
@@ -9,7 +9,7 @@ const preloadImage = (src: string) => {
     };
 
     img.onerror = img.onabort = () => {
-      reject();
+      reject(false);
     };
 
     img.src = src;
@@ -17,14 +17,14 @@ const preloadImage = (src: string) => {
 };
 
 export const useImagePreloader = (images: string[]) => {
-  const [preloadedImages, setPreloadedImages] = useState<boolean>(false);
+  const [isAllPreloaded, setPreloadedImages] = useState<boolean>(false);
 
   useEffect(() => {
     let isCancelled = false;
 
     const preloadAll = async () => {
       if (isCancelled) return;
-      const promiseList: Promise<any>[] = images.map((src) =>
+      const promiseList: Promise<boolean>[] = images.map((src) =>
         preloadImage(src)
       );
       await Promise.all(promiseList);
@@ -40,5 +40,5 @@ export const useImagePreloader = (images: string[]) => {
     };
   }, [images]);
 
-  return preloadedImages;
+  return isAllPreloaded;
 };

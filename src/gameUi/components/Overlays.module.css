@@ -12,7 +12,8 @@
   z-index: var(--overlays-z-index);
 }
 
-.Overlay > div {
+.Overlay > div,
+.Overlay > div > div {
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -10,14 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.26.7",
-    "@tanstack/router-vite-plugin": "^1.26.6",
-    "@types/react-transition-group": "^4.4.10",
-    "planck": "^1.0.0-alpha.4",
-    "react": "^19.0.0-beta-94eed63c49-20240425",
-    "react-dom": "^19.0.0-beta-94eed63c49-20240425",
-    "stage-js": "^0.9.5",
-    "tone": "^14.9.17"
+    "planck": "^1.0.2",
+    "react": "^19.0.0-rc-9d4fba0788-20240530",
+    "react-dom": "^19.0.0-rc-9d4fba0788-20240530",
+    "tone": "^14.9.17",
+    "update": "^0.7.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

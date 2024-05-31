@@ -8,6 +8,7 @@
       "@context/*": ["context/*"],
       "@utils/*": ["utils/*"],
       "@gameConfig/*": ["gameConfig/*"],
+      "@assets/*": ["assets/*"],
     },
     "target": "ES2020",
     "useDefineForClassFields": true,
