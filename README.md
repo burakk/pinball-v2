@@ -1,5 +1,16 @@
 # Pinball
 
+"Tilt" is a pinball game.
+
+## To Do
+
+- [x] remove old play intro sound
+- [x] add tube extra ball bonus
+- [] enhance the score change screen
+- [] add kuyucakli.com pinball page
+- [] make opensource
+- [] add github icon
+
 ## List of game elements
 
 - bumper
@@ -19,12 +30,3 @@
 - pop bumper: Rround, mushroom-shaped targets set into the playfield of most pinball machines. They register a hit when the ball collides with them and forcefully kick the ball away.
 - kickout hole:
   A depression in the pinball table that the ball can fall into. This is usually just large enough for the ball to fit into it. After gaining some points, and/or adjusting the game state, the ball is kicked back into play in a predictable direction and speed.
-
-## To Do
-
-- [x] remove old play intro sound
-- [x] add tube extra ball bonus
-- [] enhance the score change screen
-- [] add kuyucakli.com pinball page
-- [] make opensource
-- [] add github icon

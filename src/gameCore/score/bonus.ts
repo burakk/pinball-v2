@@ -43,7 +43,13 @@ export function attachLockBonus(activeDuration = 7000, lockDuration = 2000) {
 
 export function tubeBonus(balls: Body[]) {
 
-  plungeSimple(balls[1]);
+  for (const ball of balls) {
+    if (!ball.isActive()) {
+      plungeSimple(ball);
+      break;
+    }
+  }
+
 
 
 }
