@@ -21,9 +21,10 @@ export function createBalls() {
 }
 
 export function plungeSimple(ball: Body) {
-    ball.setActive(true);
-    ball.applyLinearImpulse(Vec2(0.8, -40), ball.getWorldCenter());
-  
+  if (ball.isActive()) return;
+  ball.setActive(true);
+  ball.applyLinearImpulse(Vec2(0.8, -40), ball.getWorldCenter());
+
 }
 
 export function plunge(ball: Body) {

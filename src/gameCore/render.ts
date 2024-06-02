@@ -1,7 +1,7 @@
 import { drawFlipper } from "@gameCore/graphics/drawFlipper";
 import { drawParticle } from "@gameCore/graphics/drawParticle";
 import { globals } from "@gameConfig/globals";
-import { Edge, Polygon, RevoluteJoint } from "planck";
+import { EdgeShape, PolygonShape, RevoluteJoint } from "planck";
 import { FF, GameElementUserData } from "@gameCore/types";
 import { drawChain } from "./graphics/drawChain";
 import { drawCircle } from "./graphics/drawCircle";
@@ -35,13 +35,13 @@ export const render = function (ctx: CanvasRenderingContext2D) {
         case "GROUND":
         case "SCOOP":
         case "TUBE-WALL":
-          drawChain(ctx, shape as Polygon);
+          drawChain(ctx, shape as PolygonShape);
           break;
         case "LANE":
         case "EDGE-SENSOR":
         case "TUBE-SENSOR-OUT":
         case "TUBE-SENSOR-IN":
-          drawEdge(ctx, shape as Edge, fixtureColor);
+          drawEdge(ctx, shape as EdgeShape, fixtureColor);
           break;
         case "CENTRAL-SENSOR":
         case "SCOOP-SENSOR":
@@ -61,6 +61,13 @@ export const render = function (ctx: CanvasRenderingContext2D) {
           );
           break;
       }
+
+      if (gameElementType === "TUBE-SENSOR-IN" && b.getUserData().bonus) {
+        console.log(b.getUserData())
+        b.getUserData().fxGif.style.display = "block";
+      }
+      else if (gameElementType === "TUBE-SENSOR-OUT" && !b.getUserData().bonus)
+        b.getUserData().fxGif.style.display = "none";
     }
   }
 

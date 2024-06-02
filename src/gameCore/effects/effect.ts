@@ -35,7 +35,7 @@ export function createParticleFx(position: Vec2, countMax = 1) {
 
 }
 
-export function loadGifFxImages(gifFxList:{path:string, x:string, y:string}[]):HTMLImageElement[] {
+export function loadGifFxImages(gifFxList: { path: string, x: string, y: string }[]): HTMLImageElement[] {
 
 
   const pinballTableEl = document.querySelector("body");
@@ -44,8 +44,8 @@ export function loadGifFxImages(gifFxList:{path:string, x:string, y:string}[]):H
     const img = new Image();
     img.src = gif.path;
     img.style.position = "absolute";
-    img.style.top =  gif.y  ;
-    img.style.left = gif.x ;
+    img.style.top = gif.y;
+    img.style.left = gif.x;
     img.style.display = "none";
     pinballTableEl?.append(img);
     return img;

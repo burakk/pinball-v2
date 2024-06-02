@@ -63,4 +63,5 @@ a {
   background-position: 0px 0px;
   border-radius: 8px;
   overflow: hidden;
+  z-index: 1;
 }

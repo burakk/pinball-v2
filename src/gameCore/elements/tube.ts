@@ -50,11 +50,11 @@ export function createTubes() {
             isSensor: true,
         });
 
-        inSensor.setUserData({ gameElementType: "TUBE-SENSOR-IN", midPoint: inSensorMidPoint,color:"rgba(200, 200, 0, 0.5)" });
-        outSensor.setUserData({ gameElementType: "TUBE-SENSOR-OUT", color:"rgba(200, 200, 0, 0.1)" });
+        inSensor.setUserData({ gameElementType: "TUBE-SENSOR-IN", midPoint: inSensorMidPoint, color: "rgba(200, 200, 0, 0.5)", });
+        outSensor.setUserData({ gameElementType: "TUBE-SENSOR-OUT", color: "rgba(200, 200, 0, 0.1)", });
 
 
-        body.setUserData({ gameElementType: "TUBE", toggleTubeWalls: toggleTubeWalls(wall1, wall2) });
+        body.setUserData({ gameElementType: "TUBE", toggleTubeWalls: toggleTubeWalls(wall1, wall2), bonus: false, fxGif: tube.fxGif });
     }
 
 }

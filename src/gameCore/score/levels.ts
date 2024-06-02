@@ -6,12 +6,14 @@ let level = 0;
 
 
 export function manageLevels(currentScore: number, balls: Body[]) {
-    if (currentScore > levels[1].requiredScore && level === 0  ) {
-        //two balls
+    if (currentScore > levels[1].requiredScore && level === 0) {
+        //three balls
         level = 1;
-       plungeSimple(balls[2]);
+        plungeSimple(balls[1]);
+        plungeSimple(balls[2]);
     }
 
+    /*
     if (currentScore > levels[2].requiredScore && level === 1 ) {
         //three balls
         level = 2;
@@ -19,9 +21,10 @@ export function manageLevels(currentScore: number, balls: Body[]) {
         plungeSimple(balls[2]);
       
     }
+    */
 }
 
 
-export function checkEndOfGame(balls: Body[]){
-    return balls.every((ball)=>!ball.isActive());
+export function checkEndOfGame(balls: Body[]) {
+    return balls.every((ball) => !ball.isActive());
 }

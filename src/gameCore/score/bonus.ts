@@ -1,5 +1,7 @@
 import { holdBall, throwBall } from "@gameCore/elements/ball";
+import { plungeSimple } from "@gameCore/elements/ball";
 import { Body } from "planck";
+
 
 //inactiveDuration = 10000, activeDuration = 7000, lockDuration = 2000
 
@@ -9,7 +11,7 @@ export function attachLockBonus(activeDuration = 7000, lockDuration = 2000) {
   let timeoutRef: number;
 
   async function startLifeCycle() {
-    const inactiveDuration = Math.random() * 8000 + 14000;
+    const inactiveDuration = Math.random() * 8000 + 20000;
 
     setTimeout(() => {
       rVal.state = "active";
@@ -35,4 +37,13 @@ export function attachLockBonus(activeDuration = 7000, lockDuration = 2000) {
   startLifeCycle();
 
   return rVal;
+}
+
+
+
+export function tubeBonus(balls: Body[]) {
+
+  plungeSimple(balls[1]);
+
+
 }

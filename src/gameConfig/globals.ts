@@ -5,8 +5,10 @@ import { rotatePoints, segmentedBezier } from "@utils/bezier";
 import { translateElement } from "@utils/translateElement";
 import { loadGifFxImages } from "@gameCore/effects/effect";
 import gifFx1 from "../assets/images/fx_1.gif";
+import bgShake from "../assets/images/bg-shake.gif";
 
 export const gifFxImages = loadGifFxImages([
+  { path: bgShake, x: "calc( 50% - 190px)", y: "calc( 50% - 290px )" },
   { path: gifFx1, x: "calc( 50% - 146px )", y: "calc( 50% - 258px )" },
   { path: gifFx1, x: "calc( 50% - 22px  )", y: "calc( 50% + 30px  )" },
 
@@ -470,6 +472,7 @@ const gameElements = {
   tubes: [
     {
       shape: "chain",
+      fxGif: gifFxImages[0],
       coordinates: [
         //inner
         [
@@ -537,14 +540,14 @@ const gameElements = {
       gameElementType: "CENTRAL-SENSOR",
       coordinates: Vec2(12.0, 21.0),
       id: "sensor0",
-      fxGif: gifFxImages[1],
+      fxGif: gifFxImages[2],
     },
     {
       shape: "circle",
       gameElementType: "SCOOP-SENSOR",
       coordinates: Vec2(4.5, 3.0),
       id: "sensor1",
-      fxGif: gifFxImages[0],
+      fxGif: gifFxImages[1],
     },
 
     {
@@ -607,8 +610,8 @@ const gameElements = {
 const credits = { bumper: 3 };
 const levels = [
   { requiredScore: 0 },
-  { requiredScore: 400 },
-  { requiredScore: 800 },
+  { requiredScore: 1000 },
+  { requiredScore: 3000 },
 ];
 const world = new World(Vec2(0.0, 10.0));
 const ground = createGround(world, gameElements.groundAnchors);

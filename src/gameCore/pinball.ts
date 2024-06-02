@@ -27,6 +27,7 @@ import {
   playTubeSound,
   playScoopLockSound,
 } from "./audio/toneWorks";
+import { tubeBonus } from "./score/bonus";
 
 const gameInfo: GameInfo = {
   totalScore: 0,
@@ -57,6 +58,8 @@ export function createPinball() {
   createTubes();
   //initial ball
   balls = createBalls();
+
+
   //sound
   const permitSoundWithUserClick = toneWork();
   //audioContext is not allowed until  user's first click
@@ -105,6 +108,8 @@ function handleContact(contact: Contact) {
   const fixtureB: FF = contact.getFixtureB();
 
   const contactedBall = fixtureB.getBody();
+
+
   const {
     gameElementType: aType,
     id: aId,
@@ -147,18 +152,21 @@ function handleContact(contact: Contact) {
     //const contactedBallPos = contactedBall.getPosition();
     const ang =
       Math.atan2(midPoint.y - v.y, midPoint.x - v.x) * (180 / Math.PI);
-    console.log(ang);
+    // console.log(ang);
 
     if (v.y < 0.0 && ang < 117 && ang > 66) {
       playTubeSound();
+      tubeBonus(balls);
       //speed up in tube
       contactedBall.applyLinearImpulse(Vec2(v.x * 2, v.y * 2), Vec2(0, 0));
       fixtureA.getBody().getUserData().toggleTubeWalls(chainLaneFixtures);
+      fixtureA.getBody().getUserData().bonus = true;
     }
   }
 
   if (aType === "TUBE-SENSOR-OUT") {
     fixtureA.getBody().getUserData().toggleTubeWalls(chainLaneFixtures);
+    fixtureA.getBody().getUserData().bonus = false;
   }
 
   // *** Bonus *** //
@@ -181,7 +189,7 @@ function handleContact(contact: Contact) {
     }
   }
 
-  //manage level
+  // Manage level
   manageLevels(gameInfo.totalScore, balls);
 
   // Effects
@@ -195,38 +203,40 @@ function handleContact(contact: Contact) {
 
 /* --- PRE-SOLVE --- */
 
+
 function handlePreSolve(contact: Contact) {
-  const fixtureA: FF = contact.getFixtureA();
-  const fixtureB: FF = contact.getFixtureB();
+  // const fixtureA: FF = contact.getFixtureA();
+  // const fixtureB: FF = contact.getFixtureB();
 
-  const contactedBall = fixtureB.getBody();
-  const { gameElementType: aType, midPoint } =
-    fixtureA.getUserData() as GameElementUserData;
+  // const contactedBall = fixtureB.getBody();
+  // const { gameElementType: aType, midPoint } =
+  //   fixtureA.getUserData() as GameElementUserData;
 
-  if (aType === "TUBE-SENSOR-IN") {
-    const contactedBallPos = contactedBall.getPosition();
-    const ang = Math.atan2(
-      contactedBallPos.y - midPoint.y,
-      contactedBallPos.x - midPoint.y
-    );
-    console.log(ang);
-    const v = contactedBall.getLinearVelocity();
-    // //console.log(fixtureA.getAABB(0), fixtureB.getAABB(0).lowerBound);
-    // //console.log(leftLimitSensor, "****", aType);
-    const normal = contact.getWorldManifold().normal;
-    const normalAngleDeg = (Math.atan2(normal.y, normal.x) * 180) / Math.PI;
-    console.log((Math.atan2(normal.y, normal.x) * 180) / Math.PI);
-    console.log(contact.getWorldManifold());
-    fixtureA.setFilterCategoryBits(0);
+  // if (aType === "TUBE-SENSOR-IN") {
+  //   // const contactedBallPos = contactedBall.getPosition();
+  //   // const ang = Math.atan2(
+  //   //   contactedBallPos.y - midPoint.y,
+  //   //   contactedBallPos.x - midPoint.y
+  //   // );
 
-    if (normalAngleDeg > 68 && normalAngleDeg < 107) {
-      //speed up in tube
+  //   const v = contactedBall.getLinearVelocity();
+  //   // //console.log(fixtureA.getAABB(0), fixtureB.getAABB(0).lowerBound);
+  //   // //console.log(leftLimitSensor, "****", aType);
+  //   const normal = contact.getWorldManifold().normal;
+  //   const normalAngleDeg = (Math.atan2(normal.y, normal.x) * 180) / Math.PI;
+  //   // console.log((Math.atan2(normal.y, normal.x) * 180) / Math.PI);
+  //   // console.log(contact.getWorldManifold());
+  //   fixtureA.setFilterCategoryBits(0);
 
-      contactedBall.applyLinearImpulse(Vec2(v.x * 2, v.y * 2), Vec2(0, 0));
-      fixtureA.getBody().getUserData().toggleTubeWalls(chainLaneFixtures);
-    }
-  }
+  //   if (normalAngleDeg > 68 && normalAngleDeg < 107) {
+  //     //speed up in tube
+  //     tubeBonus(balls);
+  //     contactedBall.applyLinearImpulse(Vec2(v.x * 2, v.y * 2), Vec2(0, 0));
+  //     fixtureA.getBody().getUserData().toggleTubeWalls(chainLaneFixtures);
+  //   }
+  // }
 }
+
 
 function handleTick() {
   if (pFx) {
