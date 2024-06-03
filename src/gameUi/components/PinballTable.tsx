@@ -8,7 +8,7 @@ import { Pinball } from "@gameCore/types";
 import { useGameContext } from "@context/GameContext";
 import { Grid } from "./Grid";
 import { ButtonPlunge } from "./Buttons";
-import Score from "./Score";
+import { DynamicScore } from "./Score";
 import {
   Overlays,
 } from "./Overlays";
@@ -81,7 +81,7 @@ export default function PinballTable({ width = 384, height = 560 }) {
 
       <Overlays contentType={gameInfo.runningMode} key={gameInfo.runningMode} />
 
-      <Score />
+      <DynamicScore />
 
       <TableLightBulbs />
 

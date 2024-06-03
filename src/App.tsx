@@ -10,6 +10,7 @@ import bgShake from "./assets/images/bg-shake.gif";
 import "./App.css";
 import { GameContextProvider } from "./context/GameContext";
 
+
 function App() {
   const gameImages = [flipperUrl, gifFx1, starAnim, arrowsAnim, bgShake];
   const isOk = useImagePreloader(gameImages);
@@ -18,7 +19,9 @@ function App() {
 
   return (
     <>
+
       <GameContextProvider>
+
         <Layout>
           <PinballTable />
         </Layout>
