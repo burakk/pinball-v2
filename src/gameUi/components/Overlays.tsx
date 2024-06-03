@@ -14,6 +14,7 @@ import LogoMain from "./LogoMain";
 import { Button } from "./Buttons";
 import IntroVideo from "./Intro";
 import { useGameContext } from "@context/GameContext";
+import bgShake from "@assets/images/bg-shake.gif";
 
 export function Overlays({ contentType }) {
   //const [content, setContent] = useState<OverlayContents>("intro");
@@ -68,6 +69,7 @@ export const OverlayContentInfo = (
     <div className={styles.OverlayContentIntro}>
       {
         showInfo && <div>
+
           <LogoMain />
           {props.children}
           <Button onClick={() => {

@@ -27,7 +27,7 @@ function NumStrip({ activeIndex = "0" }) {
       {
         Array(10)
           .fill(null)
-          .map((_, num) => <li key={_} >{num}</li>)
+          .map((_, index) => <li key={index} >{index}</li>)
       }
     </ul>
   );
@@ -54,10 +54,10 @@ export function DynamicScore() {
   return (
     <div className={styles.DynamicScore}>
       <div className={styles.NumStripsWrapper}>
-      <NumStrip activeIndex={"-" + formatted[0]} />
-      <NumStrip activeIndex={"-" + formatted[1]} />
-      <NumStrip activeIndex={"-" + formatted[2]} />
-      <NumStrip activeIndex={"-" + formatted[3]} />
+        <NumStrip activeIndex={"-" + formatted[0]} />
+        <NumStrip activeIndex={"-" + formatted[1]} />
+        <NumStrip activeIndex={"-" + formatted[2]} />
+        <NumStrip activeIndex={"-" + formatted[3]} />
       </div>
     </div>
   )
